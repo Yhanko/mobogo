@@ -126,22 +126,6 @@ export const FooterPublic = () => {
             </h4>
             <ul className="space-y-2">
               <li>
-                <Link
-                  to="/docs"
-                  className="text-sm text-text-secondary hover:text-primary transition-colors"
-                >
-                  Documentação e Guia
-                </Link>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-sm text-text-secondary hover:text-primary transition-colors"
-                >
-                  API Reference
-                </a>
-              </li>
-              <li>
                 <a
                   href="#"
                   className="text-sm text-text-secondary hover:text-primary transition-colors"
@@ -169,7 +153,7 @@ export const FooterPublic = () => {
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-primary mt-0.5 shrink-0" />
                 <span className="text-sm text-text-secondary">
-                  Edifício Cipher, Talatona
+                  Talaton Business Center
                   <br />
                   Luanda, Angola
                 </span>

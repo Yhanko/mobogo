@@ -1,10 +1,9 @@
 import { motion } from 'framer-motion';
 import {
-  ArrowRight,
   FileText,
   CheckCircle2,
   Zap,
-  ShieldCheck,
+  Download
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -59,11 +58,11 @@ export const HeroSection = () => {
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Link to="/login">
                 <Button className="h-14 px-8 text-base bg-primary hover:bg-primary-hover text-black font-bold shadow-[0_0_20px_rgba(253,185,19,0.2)] hover:shadow-[0_0_30px_rgba(253,185,19,0.4)] transition-all flex items-center gap-2 w-full sm:w-auto">
-                  Começar Agora
-                  <ArrowRight className="w-5 h-5" />
+                  Baixa o app
+                  <Download className="w-5 h-5" />
                 </Button>
               </Link>
-              <Link to="/login">
+              <Link to="/sobre">
                 <Button
                   variant="outline"
                   className="h-14 px-8 text-base border-border-subtle hover:bg-surface-elevated text-text-primary w-full sm:w-auto"

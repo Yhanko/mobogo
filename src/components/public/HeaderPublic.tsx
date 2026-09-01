@@ -86,11 +86,6 @@ export const HeaderPublic = () => {
           {/* Actions */}
           <div className="hidden md:flex items-center gap-4">
             <ThemeToggle />
-            <Link to="/login">
-              <Button className="bg-primary hover:bg-primary-hover text-black font-bold border-none shadow-[0_0_15px_rgba(253,185,19,0.15)] hover:shadow-[0_0_25px_rgba(253,185,19,0.3)] transition-all">
-                Entrar no Sistema
-              </Button>
-            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -128,13 +123,6 @@ export const HeaderPublic = () => {
               {link.name}
             </a>
           ))}
-          <div className="px-4 pt-2 border-t border-border-subtle">
-            <Link to="/login" onClick={() => setMobileMenuOpen(false)}>
-              <Button className="w-full bg-primary hover:bg-primary-hover text-black font-bold">
-                Entrar no Sistema
-              </Button>
-            </Link>
-          </div>
         </div>
       )}
     </header>
