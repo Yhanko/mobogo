@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem; /* Account for fixed header height */
+  }
+
+  :root {
+    /* Light Theme (Default) - Softer grays to reduce eye strain */
+    --background: #f1f5f9;
+    --foreground: #0f172a;
+    --card: #f8fafc;
+    --card-foreground: #0f172a;
+    --popover: #f8fafc;
+    --popover-foreground: #0f172a;
+    --primary: #2563eb;
+    --primary-foreground: #ffffff;
+    --secondary: #64748b;
+    --secondary-foreground: #f8fafc;
+    --muted: #e2e8f0;
+    --muted-foreground: #475569;
+    --accent: #e2e8f0;
+    --accent-foreground: #0f172a;
+    --destructive: #fee2e2;
+    --destructive-foreground: #b91c1c;
+    --border: #cbd5e1;
+    --input: #f8fafc;
+    --ring: #2563eb;
+    --radius: 0.25rem;
+
+    /* Custom Semantic Colors */
+    --surface-elevated: #e2e8f0;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --border-subtle: #cbd5e1;
+    --input-bg: #f8fafc;
+    --danger-bg: #fee2e2;
+    --danger-text: #b91c1c;
+    --success-bg: #d1fae5;
+    --success-text: #047857;
+    --primary-hover: #1d4ed8;
+  }
+
+  .dark {
+    /* MobGo Palette */
+    --background: #0e0e0e;
+    --foreground: #e5e2e1;
+    --card: #121212;
+    --card-foreground: #e5e2e1;
+    --popover: #1a1a1a;
+    --popover-foreground: #e5e2e1;
+    --primary: #3b82f6;
+    --primary-foreground: #ffffff;
+    --secondary: #c5c7c8;
+    --secondary-foreground: #2e3132;
+    --muted: #2a2a2a;
+    --muted-foreground: #d5c4ac;
+    --accent: #1a1a1a;
+    --accent-foreground: #e5e2e1;
+    --destructive: #ffb4ab;
+    --destructive-foreground: #690005;
+    --border: #414042;
+    --input: #0d0d0d;
+    --ring: #3b82f6;
+
+    /* Custom Semantic Colors */
+    --surface-elevated: #1a1a1a;
+    --text-primary: #e5e2e1;
+    --text-secondary: #c5c7c8;
+    --border-subtle: #414042;
+    --input-bg: #0d0d0d;
+    --danger-bg: #9b2226;
+    --danger-text: #ffb4ab;
+    --success-bg: #2d6a4f;
+    --success-text: #e5e2e1;
+    --primary-hover: #60a5fa;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: 'Hanken Grotesk', system-ui, sans-serif;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  /* Glassmorphism helpers */
+  .glass {
+    @apply bg-background/90 backdrop-blur-xl border border-border-subtle;
+  }
+
+  .glass-card {
+    @apply bg-card backdrop-blur-md border border-border-subtle;
+  }
+
+  /* MobGo glows */
+  .glow-gold {
+    box-shadow: 0 0 16px -4px rgba(253, 185, 19, 0.3);
+  }
+
+  .glow-silver {
+    box-shadow: 0 0 16px -4px rgba(192, 194, 197, 0.25);
+  }
+
+  .text-glow-gold {
+    text-shadow: 0 0 12px rgba(253, 185, 19, 0.4);
+  }
+
+  .text-glow-silver {
+    text-shadow: 0 0 12px rgba(192, 194, 197, 0.4);
+  }
+
+  /* Scrollbar custom (webkit) */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-border-subtle rounded-full;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    @apply bg-secondary;
+  }
+}
