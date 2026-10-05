@@ -5,17 +5,17 @@
 # ------------------------------------------------------------------------------
 # Estágio 1: Dependências e Build da Aplicação
 # ------------------------------------------------------------------------------
-FROM node:22-alpine AS builder
+FROM node:20-alpine AS builder
 
 WORKDIR /app
 
 # Copia os manifestos de dependências para aproveitar o cache de camadas do Docker
 COPY package.json package-lock.json ./
 
-# Instalação limpa e reproduzível das dependências
+# Instalação limpa e determinística das dependências
 RUN npm ci
 
-# Suporte a injeção de variáveis de ambiente do Vite no momento do build
+# Variáveis de ambiente de build (o Vite embute variáveis VITE_* no bundle final)
 ARG VITE_API_URL
 ARG VITE_API_HASH
 ENV VITE_API_URL=$VITE_API_URL \
@@ -31,18 +31,15 @@ RUN npm run build
 # ------------------------------------------------------------------------------
 # Estágio 2: Execução com Nginx Ultra-leve e Performático
 # ------------------------------------------------------------------------------
-FROM nginx:1.27-alpine AS runner
+FROM nginx:alpine AS runner
 
-# Remove a configuração padrão do Nginx
-RUN rm -rf /etc/nginx/conf.d/default.conf
-
-# Aplica as configurações personalizadas (SPA fallback, Gzip, Caching, Segurança)
+# Aplica a configuração personalizada do Nginx (SPA fallback, Gzip, Caching, Segurança)
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copia os arquivos estáticos compilados do estágio builder
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Define permissões adequadas
+# Define permissões adequadas para o usuário nginx
 RUN chown -R nginx:nginx /usr/share/nginx/html && \
     chmod -R 755 /usr/share/nginx/html
 
