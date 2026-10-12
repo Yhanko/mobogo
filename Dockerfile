@@ -44,11 +44,11 @@ RUN chown -R nginx:nginx /usr/share/nginx/html && \
     chmod -R 755 /usr/share/nginx/html
 
 # Porta exposta do servidor Web
-EXPOSE 80
+EXPOSE 3000
 
 # Verificação de integridade do container
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD wget --spider -q http://localhost/ || exit 1
+  CMD wget --spider -q http://localhost:3000/ || exit 1
 
 # Inicialização do Nginx em primeiro plano
 CMD ["nginx", "-g", "daemon off;"]

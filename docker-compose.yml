@@ -9,4 +9,4 @@ services:
     container_name: mobogo-leadingpage
     restart: unless-stopped
     ports:
-      - "${PORT:-80}:80"
+      - "${PORT:-3000}:3000"
